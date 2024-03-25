@@ -26,20 +26,10 @@ const AddressForm = ({ initialValues, onBack, onSubmit }: AddressFormProps) => {
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Field
-              component={TextField}
-              name="lastName"
-              label="Last Name"
-              fullWidth
-            />
+            <Field component={TextField} name="lastName" label="Last Name" fullWidth />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Field
-              component={TextField}
-              name="firstName"
-              label="First Name"
-              fullWidth
-            />
+            <Field component={TextField} name="firstName" label="First Name" fullWidth />
           </Grid>
           <Grid item xs={12}>
             <Field
@@ -51,25 +41,14 @@ const AddressForm = ({ initialValues, onBack, onSubmit }: AddressFormProps) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Field
-              component={TextField}
-              name="comment"
-              label="Comment"
-              fullWidth
-              multiline
-            />
+            <Field component={TextField} name="comment" label="Comment" fullWidth multiline />
           </Grid>
         </Grid>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button onClick={onBack} sx={{ mt: 3, ml: 1 }}>
             Back
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            sx={{ mt: 3, ml: 1 }}
-          >
+          <Button variant="contained" color="primary" type="submit" sx={{ mt: 3, ml: 1 }}>
             Next
           </Button>
         </Box>
