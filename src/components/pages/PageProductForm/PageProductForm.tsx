@@ -97,10 +97,7 @@ export default function PageProductForm() {
                   />
                 </Grid>
                 <Grid item container xs={12} justifyContent="space-between">
-                  <Button
-                    color="primary"
-                    onClick={() => navigate("/admin/products")}
-                  >
+                  <Button color="primary" onClick={() => navigate("/admin/products")}>
                     Cancel
                   </Button>
                   <Button
