@@ -1,6 +1,4 @@
-import MuiTextField, {
-  TextFieldProps as MuiTextFieldProps,
-} from "@mui/material/TextField";
+import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
 import { FieldProps, getIn } from "formik";
 
 export interface TextFieldProps

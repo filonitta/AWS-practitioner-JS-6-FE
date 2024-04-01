@@ -23,10 +23,7 @@ function App() {
           <Route index element={<PageProductForm />} />
           <Route path=":id" element={<PageProductForm />} />
         </Route>
-        <Route
-          path="*"
-          element={<Typography variant="h1">Not found</Typography>}
-        />
+        <Route path="*" element={<Typography variant="h1">Not found</Typography>} />
       </Routes>
     </MainLayout>
   );
