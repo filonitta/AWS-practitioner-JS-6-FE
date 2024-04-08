@@ -27,13 +27,8 @@ export default function Header() {
     <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          <Link
-            component={RouterLink}
-            sx={{ color: "inherit" }}
-            underline="none"
-            to="/"
-          >
-            My Store!
+          <Link component={RouterLink} sx={{ color: "inherit" }} underline="none" to="/">
+            My Things
           </Link>
         </Typography>
 
@@ -64,18 +59,10 @@ export default function Header() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem
-                component={RouterLink}
-                to="/admin/orders"
-                onClick={handleClose}
-              >
+              <MenuItem component={RouterLink} to="/admin/orders" onClick={handleClose}>
                 Manage orders
               </MenuItem>
-              <MenuItem
-                component={RouterLink}
-                to="/admin/products"
-                onClick={handleClose}
-              >
+              <MenuItem component={RouterLink} to="/admin/products" onClick={handleClose}>
                 Manage products
               </MenuItem>
             </Menu>

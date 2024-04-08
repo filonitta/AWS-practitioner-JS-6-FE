@@ -1,6 +1,8 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import { Button } from "@mui/material";
 
 type CSVFileImportProps = {
   url: string;
@@ -23,25 +25,34 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
   };
 
   const uploadFile = async () => {
-    console.log("uploadFile to", url);
+    console.info("uploadFile to", url);
+    if (!file) return;
 
     // Get the presigned URL
-    // const response = await axios({
-    //   method: "GET",
-    //   url,
-    //   params: {
-    //     name: encodeURIComponent(file.name),
-    //   },
-    // });
-    // console.log("File to upload: ", file.name);
-    // console.log("Uploading to: ", response.data);
-    // const result = await fetch(response.data, {
-    //   method: "PUT",
-    //   body: file,
-    // });
-    // console.log("Result: ", result);
-    // setFile("");
+    const response = await axios({
+      method: "GET",
+      url,
+      params: {
+        name: encodeURIComponent(file.name),
+      },
+      headers: {
+        "Content-Type": "text/csv", // Make sure this type matches type in signedUrl.
+      },
+    });
+
+    console.info("File to upload: ", file.name);
+    console.info("Uploading to: ", response.data);
+
+    const result = await fetch(response.data, {
+      method: "PUT",
+      body: file,
+    });
+
+    console.info("Result: ", result);
+
+    setFile(undefined);
   };
+
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
@@ -51,8 +62,25 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
         <input type="file" onChange={onFileChange} />
       ) : (
         <div>
-          <button onClick={removeFile}>Remove file</button>
-          <button onClick={uploadFile}>Upload file</button>
+          <Button
+            type="button"
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={removeFile}
+            sx={{ mr: 1 }}
+          >
+            Remove file
+          </Button>
+          <Button
+            type="button"
+            variant="contained"
+            size="small"
+            color="secondary"
+            onClick={uploadFile}
+          >
+            Upload file
+          </Button>
         </div>
       )}
     </Box>

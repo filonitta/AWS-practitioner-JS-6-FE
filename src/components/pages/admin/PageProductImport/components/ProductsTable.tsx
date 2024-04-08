@@ -38,9 +38,7 @@ export default function ProductsTable() {
                 {product.title}
               </TableCell>
               <TableCell align="right">{product.description}</TableCell>
-              <TableCell align="right">
-                {formatAsPrice(product.price)}
-              </TableCell>
+              <TableCell align="right">{formatAsPrice(product.price)}</TableCell>
               <TableCell align="right">{product.count}</TableCell>
               <TableCell align="right">
                 <Button
