@@ -14,8 +14,12 @@ import {
   useInvalidateAvailableProducts,
 } from "~/queries/products";
 
-export default function ProductsTable() {
-  const { data = [] } = useAvailableProducts();
+type ProductsTableProps = {
+  data: any[];
+};
+
+export default function ProductsTable({ data = [] }: ProductsTableProps) {
+  // const { data = [] } = useAvailableProducts();
   const { mutate: deleteAvailableProduct } = useDeleteAvailableProduct();
   const invalidateAvailableProducts = useInvalidateAvailableProducts();
 

@@ -7,9 +7,10 @@ import { Button } from "@mui/material";
 type CSVFileImportProps = {
   url: string;
   title: string;
+  onSuccess: () => void;
 };
 
-export default function CSVFileImport({ url, title }: CSVFileImportProps) {
+export default function CSVFileImport({ url, title, onSuccess }: CSVFileImportProps) {
   const [file, setFile] = React.useState<File>();
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +52,8 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
     console.info("Result: ", result);
 
     setFile(undefined);
+
+    onSuccess();
   };
 
   return (
