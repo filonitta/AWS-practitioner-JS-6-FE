@@ -21,10 +21,7 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
     <>
       <List disablePadding>
         {items.map((cartItem: CartItem) => (
-          <ListItem
-            sx={{ padding: (theme) => theme.spacing(1, 0) }}
-            key={cartItem.product.id}
-          >
+          <ListItem sx={{ padding: (theme) => theme.spacing(1, 0) }} key={cartItem.product.id}>
             {isEditable && <AddProductToCart product={cartItem.product} />}
             <ListItemText
               primary={cartItem.product.title}
