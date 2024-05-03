@@ -37,7 +37,8 @@ export default function CSVFileImport({ url, title, onSuccess }: CSVFileImportPr
         name: encodeURIComponent(file.name),
       },
       headers: {
-        "Content-Type": "text/csv", // Make sure this type matches type in signedUrl.
+        "Content-Type": "text/csv",
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
     });
 
