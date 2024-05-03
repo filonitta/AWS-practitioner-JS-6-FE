@@ -34,8 +34,7 @@ const Success = () => (
       Thank you for your order.
     </Typography>
     <Typography variant="subtitle1">
-      Your order is placed. Our manager will call you soon to clarify the
-      details.
+      Your order is placed. Our manager will call you soon to clarify the details.
     </Typography>
   </React.Fragment>
 );
@@ -46,9 +45,7 @@ export default function PageCart() {
   const { data = [] } = useCart();
   const { mutate: submitOrder } = useSubmitOrder();
   const invalidateCart = useInvalidateCart();
-  const [activeStep, setActiveStep] = React.useState<CartStep>(
-    CartStep.ReviewCart
-  );
+  const [activeStep, setActiveStep] = React.useState<CartStep>(CartStep.ReviewCart);
   const [address, setAddress] = useState<Address>(initialAddressValues);
 
   const isCartEmpty = data.length === 0;
@@ -88,10 +85,7 @@ export default function PageCart() {
       <Typography component="h1" variant="h4" align="center">
         Checkout
       </Typography>
-      <Stepper
-        activeStep={activeStep}
-        sx={{ padding: (theme) => theme.spacing(3, 0, 5) }}
-      >
+      <Stepper activeStep={activeStep} sx={{ padding: (theme) => theme.spacing(3, 0, 5) }}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -99,39 +93,24 @@ export default function PageCart() {
         ))}
       </Stepper>
       {isCartEmpty && <CartIsEmpty />}
-      {!isCartEmpty && activeStep === CartStep.ReviewCart && (
-        <ReviewCart items={data} />
-      )}
+      {!isCartEmpty && activeStep === CartStep.ReviewCart && <ReviewCart items={data} />}
       {activeStep === CartStep.Address && (
-        <AddressForm
-          initialValues={address}
-          onBack={handleBack}
-          onSubmit={handleAddressSubmit}
-        />
+        <AddressForm initialValues={address} onBack={handleBack} onSubmit={handleAddressSubmit} />
       )}
-      {activeStep === CartStep.ReviewOrder && (
-        <ReviewOrder address={address} items={data} />
-      )}
+      {activeStep === CartStep.ReviewOrder && <ReviewOrder address={address} items={data} />}
       {activeStep === CartStep.Success && <Success />}
-      {!isCartEmpty &&
-        activeStep !== CartStep.Address &&
-        activeStep !== CartStep.Success && (
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            {activeStep !== CartStep.ReviewCart && (
-              <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                Back
-              </Button>
-            )}
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ mt: 3, ml: 1 }}
-              onClick={handleNext}
-            >
-              {activeStep === steps.length - 1 ? "Place order" : "Next"}
+      {!isCartEmpty && activeStep !== CartStep.Address && activeStep !== CartStep.Success && (
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          {activeStep !== CartStep.ReviewCart && (
+            <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+              Back
             </Button>
-          </Box>
-        )}
+          )}
+          <Button variant="contained" color="primary" sx={{ mt: 3, ml: 1 }} onClick={handleNext}>
+            {activeStep === steps.length - 1 ? "Place order" : "Next"}
+          </Button>
+        </Box>
+      )}
     </PaperLayout>
   );
 }
